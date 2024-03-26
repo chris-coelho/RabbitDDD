@@ -4,7 +4,7 @@ using RabbitMQ.Client.Events;
 
 namespace Infra.Messaging;
 
-public class Consumer
+public class RabbitMqConsumer
 {
     public static void Consume(IModel channel, string queueName)
     {

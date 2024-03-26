@@ -3,7 +3,7 @@ using Infra.DataAccess.Repositories;
 
 namespace Application.DI;
 
-public static class DataAccessLayerExtentions
+public static class DataAccessLayerExtensions
 {
     public static IServiceCollection AddDataAccessLayer(this IServiceCollection services, IConfiguration configuration)
     {

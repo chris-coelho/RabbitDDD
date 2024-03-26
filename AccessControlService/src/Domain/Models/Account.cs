@@ -1,5 +1,6 @@
 using Common.Domain;
 using Common.Util;
+using Domain.DomainEvents;
 using Domain.Validations;
 using FluentValidation.Results;
 
@@ -44,11 +45,7 @@ public class Account : Aggregate
         CheckInvariants(this, new ChangeUsernameInvariants(), 
             new List<ValidationResult>());
         
-        //TODO: Add event AccountUsernameChangedEvent to the Aggregate
-        // AddDomainEvent(new AccountUsernameChangedEvent
-        // {
-        //     
-        // });
+        AddDomainEvent(new AccountUsernameChangedEvent(Id, Username));
 
     }
 

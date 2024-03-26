@@ -7,12 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+        <ProjectReference Include="..\..\..\_Common\_Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\_Common\_Common.csproj" />
-      <ProjectReference Include="..\Domain\Domain.csproj" />
+      <PackageReference Include="FluentValidation" Version="11.3.0" />
     </ItemGroup>
 
 </Project>

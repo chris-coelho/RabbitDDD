@@ -47,7 +47,7 @@ public class PostgresSessionFactory
                 config.SetProperty("adonet.batch_size", "1");
                 BuildSchema(config);
             });
-
+        
         try
         {
             _sessionFactory = configuration.BuildSessionFactory();
