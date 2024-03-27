@@ -25,11 +25,10 @@ public static class MessagingExtensions
 
         // Queue declarations
         broker.RegisterQueue(MessagingConstants.UsernameAccountChangedQueue);
-        
+
         // Consumer Declarations
         var messagingScope = serviceProvider.GetService<IServiceScopeFactory>();
-        var consumer = broker.GetConsumer(MessagingConstants.UsernameAccountChangedQueue);
-        consumer.Received += new AccountUsernameChangedEventHandler(messagingScope).Handle;
+        broker.RegisterConsumer(new AccountUsernameChangedEventHandler(messagingScope!), MessagingConstants.UsernameAccountChangedQueue);
 
         return services;
     }

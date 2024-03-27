@@ -1,7 +1,5 @@
-using System.Text;
 using Common.Messaging;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
@@ -69,15 +67,14 @@ public class RabbitMqConfiguration : IMessagingConfig
         _logger.LogInformation($"Registering queue: {queueName}...OK");
     }
 
-    public EventingBasicConsumer GetConsumer(string queueName)
+    public void RegisterConsumer<T>(T handler, string queueName) where T : IMessageConsumer
     {
         _channel ??= GetChannel();
         
         var consumer = new EventingBasicConsumer(_channel);
+        consumer.Received += handler.Handle;
 
         _channel.BasicConsume(queueName, false, consumer);
-        
-        return consumer;
     }
 
     internal static IModel GetChannel()

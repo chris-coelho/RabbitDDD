@@ -1,13 +1,14 @@
 using System.Text;
 using Application.Messaging.Events;
 using Common.Application.NotificationPattern;
+using Common.Messaging;
 using Domain.Repositories;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
 
 namespace Application.Messaging.EventHandlers;
 
-public class AccountUsernameChangedEventHandler
+public class AccountUsernameChangedEventHandler : IMessageConsumer
 {
     private readonly IServiceScopeFactory _serviceScopeFactory;
 
